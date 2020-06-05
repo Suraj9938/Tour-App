@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tourapp/model/Hotels.dart';
 import 'package:tourapp/widgets/Room.dart';
-import 'package:tourapp/widgets/Room1.dart';
+import 'file:///E:/FlutterAssignment/tour_app/lib/provider/Room1.dart';
 
 class RoomListView extends StatelessWidget {
   @override
@@ -10,15 +10,16 @@ class RoomListView extends StatelessWidget {
     final room = Provider
         .of<Hotels>(context)
         .hotel;
-    return Container(
-
-      child: ListView.builder(
-        itemBuilder: (ctx, index) =>
-            ChangeNotifierProvider.value(
-              value: room[index],
-              child: Room(),
-            ),
-        itemCount: room.length,
+    return Expanded(
+      child: Container(
+        child: ListView.builder(
+          itemBuilder: (ctx, index) =>
+              ChangeNotifierProvider.value(
+                value: room[index],
+                child: Room(),
+              ),
+          itemCount: room.length,
+        ),
       ),
     );
   }

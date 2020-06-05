@@ -2,33 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tourapp/model/Hotel_Info.dart';
 
-class Room1 extends StatefulWidget {
+class Room2 extends StatefulWidget {
   final Icon leadingIcon;
-  final Icon trailingIcon;
+  final IconButton trailingIcon;
   final String Text;
 
-  Room1({
+  Room2({
     this.leadingIcon,
     this.trailingIcon,
     @required this.Text,
   });
 
   @override
-  _Room1State createState() => _Room1State();
+  _Room2State createState() => _Room2State();
 }
 
-class _Room1State extends State<Room1> {
+class _Room2State extends State<Room2> {
   @override
   Widget build(BuildContext context) {
-    final loadedRoom = Provider.of<HotelInfo>(context);
     return ListTile(
       leading: widget.leadingIcon,
-      title: Text(
-        widget.Text,
-        style: TextStyle(
-          fontFamily: "font2",
-          fontSize: 20,
-          color: Colors.white
+      title: Padding(
+        padding: EdgeInsets.only(left: 2),
+        child: Text(
+          widget.Text,
+          style: TextStyle(
+              fontFamily: "font2",
+              fontSize: 28,
+              color: Colors.white,
+          ),
         ),
       ),
       trailing: widget.trailingIcon,

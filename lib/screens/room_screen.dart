@@ -32,16 +32,18 @@ class RoomScreen extends StatelessWidget {
           children: <Widget>[
             Column(
               children: <Widget>[
-                Container(
-                  margin: EdgeInsets.all(0),
-                  padding: EdgeInsets.all(0),
-                  height: 350,
-                  width: double.infinity,
-                  child: Image.asset(
-                    selectedHotels.hotelImage,
-                    width: double.infinity,
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.all(0),
+                    padding: EdgeInsets.all(0),
                     height: 350,
-                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    child: Image.asset(
+                      selectedHotels.hotelImage,
+                      width: double.infinity,
+                      height: 300,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ],
@@ -49,22 +51,20 @@ class RoomScreen extends StatelessWidget {
             DraggableScrollableSheet(
               initialChildSize: 0.45,
               minChildSize: 0.45,
-              maxChildSize: 0.70,
+              maxChildSize: 0.7,
               builder: (context, scrollController){
                 return Container(
-                  color: Colors.orange[300],
-                  child: SingleChildScrollView(
-                    controller: scrollController,
-                   child: /*RoomListView()*/Expanded(
-                     child: ListView.builder(
-                       itemBuilder: (ctx, index) =>
-                           ChangeNotifierProvider.value(
-                             value: room[index],
-                             child: Room(),
-                           ),
-                       itemCount: room.length,
-                     ),
-                   ),
+                  color: Colors.black45,
+                  child: Expanded(
+                    child: ListView.builder(
+                      controller: scrollController,
+                      itemBuilder: (ctx, index) =>
+                          ChangeNotifierProvider.value(
+                            value: room[index],
+                            child: Room(),
+                          ),
+                      itemCount: room.length,
+                    ),
                   ),
                 );
               },
