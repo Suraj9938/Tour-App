@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tourapp/model/Destinations.dart';
+import 'package:tourapp/screens/location_screen.dart';
 import 'package:tourapp/widgets/HotelListView.dart';
-import 'package:tourapp/widgets/Room_ListView.dart';
 
 class DestinationDetailsScreen extends StatelessWidget {
   static const routeName = 'destinations_details_screen';
@@ -24,19 +24,25 @@ class DestinationDetailsScreen extends StatelessWidget {
                 fontSize: 28,
               ),
             ),
-
             bottom: TabBar(
+              labelColor: Colors.white,
               tabs: <Widget>[
-                Text(
-                  selectedDestinations.destinationName,
-                  style: TextStyle(
-                    fontSize: 24,
+                Padding(
+                  padding: EdgeInsets.only(top: 10, bottom: 10),
+                  child: Text(
+                    selectedDestinations.destinationName,
+                    style: TextStyle(
+                      fontSize: 30,
+                    ),
                   ),
                 ),
-                Text(
-                  "Hotels",
-                  style: TextStyle(
-                    fontSize: 24,
+                Padding(
+                  padding: EdgeInsets.only(top: 10, bottom: 10),
+                  child: Text(
+                    "Hotels",
+                    style: TextStyle(
+                      fontSize: 30,
+                    ),
                   ),
                 ),
               ],
@@ -44,7 +50,7 @@ class DestinationDetailsScreen extends StatelessWidget {
           ),
           body: TabBarView(
             children: <Widget>[
-              HotelListView(),
+              LocationScreen(),
               HotelListView(),
             ],
           ),

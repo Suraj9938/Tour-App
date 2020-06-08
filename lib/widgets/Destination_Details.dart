@@ -7,7 +7,6 @@ import 'package:tourapp/screens/destination_details_screen.dart';
 import 'package:tourapp/screens/destination_overview_screen.dart';
 
 class DestinationDetails extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     final loadedDestinations = Provider.of<DestinationInfo>(context);
@@ -26,7 +25,9 @@ class DestinationDetails extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
               child: InkWell(
                 onTap: () {
-                  Navigator.of(context).pushNamed(DestinationDetailsScreen.routeName, arguments: loadedDestinations.id);
+                  Navigator.of(context).pushNamed(
+                      DestinationDetailsScreen.routeName,
+                      arguments: loadedDestinations.id);
                   //Navigator.pushNamed(context, DestinationDetailsScreen.routeName, arguments: loadedDestinations.id);
                 },
                 child: Image.asset(
@@ -60,11 +61,15 @@ class DestinationDetails extends StatelessWidget {
                 ),
                 trailing: IconButton(
                   icon: Icon(
-                    Icons.favorite_border,
+                    loadedDestinations.isFavourite
+                        ? Icons.favorite
+                        : Icons.favorite_border,
                     color: Colors.white,
                   ),
                   padding: EdgeInsets.all(0),
-                  onPressed: () {},
+                  onPressed: () {
+                    loadedDestinations.toogleisFavourite();
+                  },
                 ),
               ),
             ),

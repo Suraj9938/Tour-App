@@ -36,7 +36,7 @@ class HotelDetails extends StatelessWidget {
           ),
           Container(
             width: double.infinity,
-            height: 100,
+            height: 80,
             margin: EdgeInsets.only(top: 130),
             child: ClipRRect(
               borderRadius: BorderRadius.only(
@@ -98,12 +98,16 @@ class HotelDetails extends StatelessWidget {
                   padding: EdgeInsets.only(right: 10, bottom: 8),
                   child: IconButton(
                     icon: Icon(
-                      Icons.bookmark_border,
+                      loadedHotels.isBookMark
+                          ? Icons.bookmark
+                          : Icons.bookmark_border,
                       color: Colors.white,
                       size: 45,
                     ),
                     padding: EdgeInsets.all(0),
-                    onPressed: () {},
+                    onPressed: () {
+                      loadedHotels.toogleisBookMark();
+                    },
                   ),
                 ),
               ),

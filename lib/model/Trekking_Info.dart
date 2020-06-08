@@ -5,13 +5,18 @@ class TrekkingInfo with ChangeNotifier{
   final String TrekkingSpot;
   final String TrekSpotImage;
   final String desc;
-  bool isBookMark;
+  bool isFavourite;
 
   TrekkingInfo({
     @required this.id,
     @required this.TrekkingSpot,
     @required this.TrekSpotImage,
     @required this.desc,
-    this.isBookMark = false,
+    this.isFavourite = false,
   });
+
+  void toogleisFavourite() {
+    isFavourite = !isFavourite;
+    notifyListeners();
+  }
 }

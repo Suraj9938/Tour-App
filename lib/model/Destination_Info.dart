@@ -6,7 +6,7 @@ class DestinationInfo with ChangeNotifier{
   final String price;
   final String destinationImage;
   final String description;
-  bool isBookMark;
+  bool isFavourite;
 
   DestinationInfo({
     @required this.id,
@@ -14,6 +14,11 @@ class DestinationInfo with ChangeNotifier{
     @required this.price,
     @required this.destinationImage,
     @required this.description,
-    this.isBookMark = false,
+    this.isFavourite = false,
   });
+
+  void toogleisFavourite() {
+    isFavourite = !isFavourite;
+    notifyListeners();
+  }
 }

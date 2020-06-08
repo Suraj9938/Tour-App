@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:tourapp/model/Trekking_Info.dart';
+import 'package:tourapp/screens/trek_screen.dart';
 
 class TrekDetails extends StatelessWidget {
   @override
@@ -21,11 +22,18 @@ class TrekDetails extends StatelessWidget {
             height: 130,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
-              child: Image.asset(
-                loadedTrek.TrekSpotImage,
-                fit: BoxFit.fill,
-                width: 270,
-                height: 170,
+              child: InkWell(
+                onTap: () {
+                  Navigator.of(context).pushNamed(
+                      TrekScreen.routeName,
+                      arguments: loadedTrek.id);
+                },
+                child: Image.asset(
+                  loadedTrek.TrekSpotImage,
+                  fit: BoxFit.fill,
+                  width: 270,
+                  height: 170,
+                ),
               ),
             ),
           ),
@@ -51,11 +59,15 @@ class TrekDetails extends StatelessWidget {
                 ),
                 trailing: IconButton(
                   icon: Icon(
-                    Icons.favorite_border,
+                    loadedTrek.isFavourite
+                        ? Icons.favorite
+                        : Icons.favorite_border,
                     color: Colors.white,
                   ),
                   padding: EdgeInsets.all(0),
-                  onPressed: () {},
+                  onPressed: () {
+                    loadedTrek.toogleisFavourite();
+                  },
                 ),
               ),
             ),

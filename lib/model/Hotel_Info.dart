@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:tourapp/widgets/book_item.dart';
 
 class HotelInfo with ChangeNotifier{
   final String id;
@@ -8,6 +9,7 @@ class HotelInfo with ChangeNotifier{
   final String price;
   final String hotelDescription;
   bool isFavourite;
+  bool isBookMark;
 
   HotelInfo({
     @required this.id,
@@ -17,5 +19,17 @@ class HotelInfo with ChangeNotifier{
     @required this.price,
     @required this.hotelDescription,
     this.isFavourite = false,
+    this.isBookMark = false,
   });
+
+  void toogleisFavourite() {
+    isFavourite = !isFavourite;
+    notifyListeners();
+  }
+
+  void toogleisBookMark() {
+    isBookMark = !isBookMark;
+    notifyListeners();
+  }
 }
+

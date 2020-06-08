@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tourapp/model/Hotels.dart';
 import 'package:tourapp/widgets/Room.dart';
-import 'file:///E:/FlutterAssignment/tour_app/lib/provider/Room1.dart';
 
 class RoomListView extends StatelessWidget {
   @override
@@ -13,11 +12,13 @@ class RoomListView extends StatelessWidget {
     return Expanded(
       child: Container(
         child: ListView.builder(
-          itemBuilder: (ctx, index) =>
-              ChangeNotifierProvider.value(
-                value: room[index],
-                child: Room(),
-              ),
+          itemBuilder: (ctx, index){
+            return Room(id: room[index].id);
+          },
+          /*ChangeNotifierProvider.value(
+                  value: room[index],
+                  child: Room(),
+                ),*/
           itemCount: room.length,
         ),
       ),

@@ -7,13 +7,15 @@ class TrekListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final trekSpot = Provider.of<TrekSpot>(context).trek;
-    return ListView.builder(
-      scrollDirection: Axis.horizontal,
-      itemBuilder: (ctx, index) => ChangeNotifierProvider.value(
-        value: trekSpot[index],
-        child: TrekDetails(),
+    return Container(
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (ctx, index) => ChangeNotifierProvider.value(
+          value: trekSpot[index],
+          child: TrekDetails(),
+        ),
+        itemCount: trekSpot.length,
       ),
-      itemCount: trekSpot.length,
     );
   }
 }
