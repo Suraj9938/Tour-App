@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:tourapp/model/book_provider.dart';
 
 class BookItem extends StatelessWidget {
-  final String id;
+  final String bookedId;
   final String image;
   final String hotelName;
   final String price;
@@ -12,7 +12,7 @@ class BookItem extends StatelessWidget {
   final String location;
 
   BookItem({
-    this.id,
+    this.bookedId,
     this.image,
     this.hotelName,
     this.price,
@@ -62,7 +62,7 @@ class BookItem extends StatelessWidget {
                 ),
               ),
             ),
-            key: ValueKey(DateTime.now()),
+            key: ValueKey(DateTime.now().toString()),
             direction: DismissDirection.endToStart,
             confirmDismiss: (direction) {
               return showDialog(
@@ -113,7 +113,9 @@ class BookItem extends StatelessWidget {
                   });
             },
             onDismissed: (direction) {
-              _getHotels.removeItemsFromList(id);
+              print("my bookedid is :");
+              print(bookedId.toString());
+              _getHotels.removeItemsFromList(bookedId);
             },
             child: Card(
               shadowColor: Colors.white,

@@ -27,13 +27,15 @@ class BookScreen extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               itemCount: book.itemCount,
-              itemBuilder: (context, index) => BookItem(
-                id: book.items.values.toList()[index].id,
-                hotelName: book.items.values.toList()[index].hotelName,
-                price: book.items.values.toList()[index].price,
-                image: book.items.values.toList()[index].image,
-                location: book.items.values.toList()[index].location,
-              )),
+              itemBuilder: (context, index){
+                return BookItem(
+                  bookedId: book.items.values.toList()[index].bookedId,
+                  hotelName: book.items.values.toList()[index].hotelName,
+                  price: book.items.values.toList()[index].price,
+                  image: book.items.values.toList()[index].image,
+                  location: book.items.values.toList()[index].location,
+                );
+              }),
           ),
         ],
       ),

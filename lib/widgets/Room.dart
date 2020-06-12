@@ -278,8 +278,11 @@ class _RoomState extends State<Room> {
               ),
             ),
             onPressed: () {
+              String dateTime =DateTime.now().toString();
+              print("my new time is ");
+              print(dateTime);
               book.addToBook(
-                loadedRoom.id,
+                dateTime,
                 loadedRoom.hotelImage,
                 loadedRoom.hotelName,
                 loadedRoom.price,
